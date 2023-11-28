@@ -1,0 +1,14 @@
+{
+  "hosting": [
+    {
+      "target": "proyectocitas-a44c6",
+      "source": ".",
+      "frameworksBackend": {}
+    },
+    {
+      "target": "proyectoCitas",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
