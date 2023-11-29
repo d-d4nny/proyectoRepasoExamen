@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "gestionCitas": {
+      "hosting": {
+        "proyectocitas": [
+          "proyectocitas-a44c6"
+        ]
+      }
+    },
+    "proyectocitas-a44c6": {
+      "hosting": {
+        "proyectoCitas": [
+          "proyectocitas-a44c6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "proyectocitas-a44c6"
+  }
+}

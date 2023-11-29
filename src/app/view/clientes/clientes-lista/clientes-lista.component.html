@@ -1,1 +1,62 @@
-<p>clientes-lista works!</p>
+<!--Aqui establecemos la lista donde mostraremos los datos de los juguetes, ademas de un boton para añadir un nuevo
+juguete, otro para editarlo y otro para borrarlo-->
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-12'>
+            
+            <form class='form-inline'>
+                <fieldset class='form-group col-sm-11'></fieldset>
+                
+                <fieldset class='form-group col-sm-1'>
+                    <a class= 'btn btn-primary' routerLink="clientes/new">+</a>
+                </fieldset>
+            </form>
+            <br>
+            <table class='table table-striped'>
+                <thead>                
+                    <tr>
+                        <th class='col-sm-6'>NOMBRE</th>
+                        <th class='col-sm-6'>APELLIDOS</th>
+                        <th class='col-sm-6'>DNI</th>
+                        <th class='col-sm-6'>TELEFONO</th>
+                        <th class='col-sm-6'>EMAIL</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="clientes">
+                    <tr *ngFor='let cliente of clientes'>             
+                        <td class='col-sm-6'>
+                            <i>{{cliente.nombre}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{cliente.apellidos}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{cliente.dni}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{cliente.telefono}}</i>
+                        </td>
+                        
+                        <td class='col-sm-6'>
+                            <i>{{cliente.email}}</i>
+                        </td>
+
+                        <td class=”col-sm-1”>
+                            <a class='btn btn-info' routerLink="clientes/{{cliente.id}}/edit">Editar</a>
+                        </td>
+
+
+                        <td class=”col-sm-1”>
+                            <a class='btn btn-info' (click)="borrar(cliente.id)">-</a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

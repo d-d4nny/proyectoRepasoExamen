@@ -5,8 +5,5 @@ import { AgendaHorario } from '../../agenda-horarios/interface/agenda-horarios';
 export interface Cita {
     id: string;
     cliente: Clientes;
-    entrevistador: AgendaHorario;
-    fecha: string; // Puedes usar un formato específico de fecha aquí (ejemplo: "2023-11-28")
-    horario: ;
-    // Otros campos de la cita
+    entrevistadorFecha: AgendaHorario;
 }

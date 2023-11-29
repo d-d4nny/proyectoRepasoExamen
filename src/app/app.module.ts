@@ -11,16 +11,17 @@ import { environment } from 'src/environments/environment.development';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContenedorPrincipalComponent } from './home/contenedor-principal/contenedor-principal.component';
-import { HeaderPrincipalComponent } from './home/header-principal/header-principal.component';
+import { homeModule } from './home/home.module';
 import { BienvenidaPrincipalComponent } from './home/bienvenida-principal/bienvenida-principal.component';
-import { initializeApp as initializeApp_alias, provideFirebaseApp as provideFirebaseApp_alias } from '@angular/fire/app';
 import { MensajeComponent } from './shared/mensaje/mensaje.component';
+import { CitasModule } from './view/citas/citas.module';
+import { ClientesModule } from './view/clientes/clientes.module';
+import { AgendaHorariosModule } from './view/agenda-horarios/agenda-horarios.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContenedorPrincipalComponent,
-    HeaderPrincipalComponent,
     BienvenidaPrincipalComponent,
     MensajeComponent
   ],
@@ -30,7 +31,11 @@ import { MensajeComponent } from './shared/mensaje/mensaje.component';
     FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    NgbModule
+    homeModule,
+    NgbModule,
+    CitasModule,
+    ClientesModule,
+    AgendaHorariosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
