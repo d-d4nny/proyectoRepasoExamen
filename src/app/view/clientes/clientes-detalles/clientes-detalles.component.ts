@@ -55,8 +55,8 @@ export class ClientesDetallesComponent implements OnInit {
       console.log(this.perfileForm.value);
       this.clientesService.addCliente(this.perfileForm.value).then(
         () => {
-          alert("nuevo cliente creado");
-          console.log("nuevo cliente creado");
+          alert("Nuevo cliente creado");
+          console.log("Nuevo cliente creado");
         }, (error:any) => {
           console.log(error);
         }
@@ -69,8 +69,8 @@ export class ClientesDetallesComponent implements OnInit {
 
       this.clientesService.updateCliente(id, this.perfileForm.value).then(
         () => {
-          alert("cliente actualizado");
-          console.log("cliente actualizado");
+          alert("Cliente actualizado");
+          console.log("Cliente actualizado");
         }, (error:any) => {
           console.log(error);
         }

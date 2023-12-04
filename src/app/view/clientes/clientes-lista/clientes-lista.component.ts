@@ -21,22 +21,17 @@ export class ClientesListaComponent implements OnInit{
       
     //metodo para mostrar todos los clientes
     this.clientesService.getAllClientes().subscribe(
-      (resp:any)=>{
-        this.clientes = [];
-        resp.forEach((clientesData: any)=>{
-          console.log(clientesData);
-          this.clientes!.push({
-            id:clientesData.payload.doc.id,
-            ...clientesData.payload.doc.data()
-          })
-        })
+      resp => {
+        this.clientes = resp;
+        console.log(this.clientes);
       }
     )
   }
 
   borrar(id: string): void {
-    this.clientesService.delete(id);
-    alert("cliente borrado");
-    console.log("cliente borrado");
+    this.clientesService.delete(id).then( ()=> {
+      alert("cliente borrado");
+      console.log("cliente borrado");
+    }).catch(err => console.error(err));
   }
 }

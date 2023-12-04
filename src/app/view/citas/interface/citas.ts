@@ -4,6 +4,6 @@ import { AgendaHorario } from '../../agenda-horarios/interface/agenda-horarios';
 // Interfaz Cita con día, hora y selección de entrevistador
 export interface Cita {
     id: string;
-    cliente: Clientes;
-    entrevistadorFecha: AgendaHorario;
+    idCliente: string;
+    idAgendaHorario: string;
 }

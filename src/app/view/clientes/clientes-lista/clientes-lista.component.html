@@ -15,6 +15,7 @@ juguete, otro para editarlo y otro para borrarlo-->
             <table class='table table-striped'>
                 <thead>                
                     <tr>
+                        <th class='col-sm-2'>IDENTIFICADOR</th>
                         <th class='col-sm-6'>NOMBRE</th>
                         <th class='col-sm-6'>APELLIDOS</th>
                         <th class='col-sm-6'>DNI</th>
@@ -23,7 +24,11 @@ juguete, otro para editarlo y otro para borrarlo-->
                     </tr>
                 </thead>
                 <tbody *ngIf="clientes">
-                    <tr *ngFor='let cliente of clientes'>             
+                    <tr *ngFor='let cliente of clientes'>  
+                        <td class='col-sm-6'>
+                            <i>{{cliente.id}</i>
+                        </td>
+
                         <td class='col-sm-6'>
                             <i>{{cliente.nombre}}</i>
                         </td>

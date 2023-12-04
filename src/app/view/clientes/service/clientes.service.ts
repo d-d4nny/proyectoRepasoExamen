@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, docData, updateDoc } from '@angular/fire/firestore';
+import { doc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -11,30 +12,35 @@ export class ClientesService {
   coleccion = 'clientes';
 
   constructor(
-    private firebase: AngularFirestore) { }
+    private firebase: Firestore) { }
 
     //Metodo del servicio para obtener todos los juguetes
-  getAllClientes() : any {
-    return this.firebase.collection(this.coleccion).snapshotChanges();
+  getAllClientes() : Observable<any[]> {
+    const collRef = collection(this.firebase, this.coleccion);
+    return collectionData(collRef, {idField: 'id'}) as Observable<any[]>;
   }
 
   //Metodo del servicio para obtener un juguete concreto
   getCliente(id: string): Observable<any>{
-    return this.firebase.collection(this.coleccion).doc(id).snapshotChanges();
+    const docRef = doc(this.firebase, this.coleccion, id);
+    return docData(docRef, {idField: 'id'}) as Observable<any>;
   }
 
   //Metodo del servicio para modificar un juguete en concreto
-  updateCliente(id: string, juguete: any): any{
-    return this.firebase.collection(this.coleccion).doc(id).update(juguete);
+  updateCliente(id: string, cliente: any): any{
+    const docRef = doc(this.firebase, this.coleccion, id);
+    return updateDoc(docRef, cliente);
   }
 
   //Metodo del servicio para añadir un nuevo juguete
-  addCliente(juguete: any): any{
-    return this.firebase.collection(this.coleccion).add(juguete);
+  addCliente(cliente: any){
+    const collRef = collection(this.firebase, this.coleccion);
+    return addDoc(collRef, cliente);
   }
 
   //Metodo del servicio para borrar un juguete en concreto
-  delete(id: string): void{
-    this.firebase.collection(this.coleccion).doc(id).delete();
+  delete(id: string){
+    const docRef = doc(this.firebase, this.coleccion, id);
+    return deleteDoc(docRef);
   }
 }

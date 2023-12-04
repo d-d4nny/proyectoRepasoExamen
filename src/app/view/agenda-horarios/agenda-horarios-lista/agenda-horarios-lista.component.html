@@ -1,1 +1,61 @@
-<p>agenda-horarios-lista works!</p>
+<!--Aqui establecemos la lista donde mostraremos los datos de los juguetes, ademas de un boton para añadir un nuevo
+juguete, otro para editarlo y otro para borrarlo-->
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-12'>
+            
+            <form class='form-inline'>
+                <fieldset class='form-group col-sm-11'></fieldset>
+                
+                <fieldset class='form-group col-sm-1'>
+                    <a class= 'btn btn-primary' routerLink="agendaHorarios/new">+</a>
+                </fieldset>
+            </form>
+            <br>
+            <table class='table table-striped'>
+                <thead>                
+                    <tr>
+                        <th class='col-sm-2'>IDENTIFICADOR</th>
+                        <th class='col-sm-6'>ENTREVISTADOR</th>
+                        <th class='col-sm-6'>FECHA CITA</th>
+                        <th class='col-sm-6'>HORA CITA</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="agendaHorarios">
+                    <tr *ngFor='let agendaHorario of agendaHorarios'>
+                        <td class='col-sm-6'>
+                            <i>{{agendaHorario.id}</i>
+                        </td>
+                        
+                        <td class='col-sm-6'>
+                            <i>{{agendaHorario.entrevistador}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{agendaHorario.fechaCita}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{agendaHorario.horarioDisponible}}</i>
+                        </td>
+
+                        <td class=”col-sm-1”>
+                            
+                        </td>
+
+                        <td class=”col-sm-1”>
+                            <a class='btn btn-info' routerLink="agendaHorarios/{{agendaHorario.id}}/edit">Editar</a>
+                        </td>
+
+
+                        <td class=”col-sm-1”>
+                            <a class='btn btn-info' (click)="borrar(agendaHorario.id)">-</a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
