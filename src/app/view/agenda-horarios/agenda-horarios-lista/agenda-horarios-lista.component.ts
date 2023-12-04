@@ -20,7 +20,7 @@ export class AgendaHorariosListaComponent implements OnInit{
 
     ngOnInit(): void {
       
-      //metodo para mostrar todos los clientes
+      //metodo para mostrar todos las agendas
       this.agendaHorariosService.getAllAgendaHorarios().subscribe(
         resp => {
           this.agendaHorarios = resp;
@@ -31,8 +31,8 @@ export class AgendaHorariosListaComponent implements OnInit{
   
     borrar(id: string): void {
       this.agendaHorariosService.delete(id).then( ()=> {
-        alert("cliente borrado");
-        console.log("cliente borrado");
+        alert("Agenda borrado");
+        console.log("Agenda borrado");
       }).catch(err => console.error(err));
     }
 }

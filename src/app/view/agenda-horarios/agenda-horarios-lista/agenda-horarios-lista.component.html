@@ -15,24 +15,24 @@ juguete, otro para editarlo y otro para borrarlo-->
             <table class='table table-striped'>
                 <thead>                
                     <tr>
-                        <th class='col-sm-2'>IDENTIFICADOR</th>
-                        <th class='col-sm-6'>ENTREVISTADOR</th>
-                        <th class='col-sm-6'>FECHA CITA</th>
-                        <th class='col-sm-6'>HORA CITA</th>
+                        <th class='col-sm-1'>IDENTIFICADOR</th>
+                        <th class='col-sm-4'>FECHA CITA</th>
+                        <th class='col-sm-4'>ENTREVISTADOR</th>
+                        <th class='col-sm-4'>HORA CITA</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="agendaHorarios">
-                    <tr *ngFor='let agendaHorario of agendaHorarios'>
-                        <td class='col-sm-6'>
-                            <i>{{agendaHorario.id}</i>
+                    <tr *ngFor='let agendaHorario of agendaHorarios; let i=index'>
+                        <td class='col-sm-1'>
+                            <i>{{i+1}}</i>
                         </td>
                         
                         <td class='col-sm-6'>
-                            <i>{{agendaHorario.entrevistador}}</i>
+                            <i>{{agendaHorario.fechaCita}}</i>
                         </td>
 
                         <td class='col-sm-6'>
-                            <i>{{agendaHorario.fechaCita}}</i>
+                            <i>{{agendaHorario.entrevistador}}</i>
                         </td>
 
                         <td class='col-sm-6'>

@@ -1,1 +1,46 @@
-<p>citas-lista works!</p>
+<div class="container">
+    
+    <!--Formulario de la compra-->
+    <form [formGroup] = "perfileForm" (ngSubmit)="cita()">
+            <h1>COMPRAS PROVEEDORES</h1>
+
+            <br>
+
+        <div>
+            <p>SELECIONE EL PROVEEDOR DONDE COMPRAR: </p>
+
+            <select formControlName="proveedorSelect" class="form-control" name="proveedorSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UN PROVEEDOR...</option>
+                <option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.nombreCompleto}}</option>
+            </select>
+
+        </div>
+
+        <div>
+            <p>SELECIONE EL PRODUCTO A COMPRAR: </p>
+        
+            <select formControlName="jugueteSelect" class="form-control" name="jugueteSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UN JUGUETE...</option>
+                <option *ngFor="let agendaHorario of agendaHorarios" [value]="agendaHorario.id">{{agendaHorario.nombre}}</option>
+            </select>
+
+        </div>
+
+        <br>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="!perfileForm.valid">COMPRAR</button>
+    </form>
+    
+
+    <br>
+
+    <!--Recibo de la compra que se muestra tras la compra-->
+    <div *ngIf="agendaHorarioCitada && clienteCitado" style="background-color: bisque;">
+        <h3 style="color: crimson;">RECIBO DE COMPRA REALIZADA:</h3>
+        <br>
+        <p>PROVEEDOR DE COMPRA: {{clienteCitado.nombre}}</p>
+        <p>ARTICULO DE COMPRA: {{jugueteComprado.nombre}}</p>
+    </div>
+    
+
+</div>

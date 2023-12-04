@@ -41,7 +41,7 @@ ngOnInit() {
   this.tipoEntrevistadorSelect = TipoEntrevistadorSelect;
   this.horasCitasSelect = HorasCitasSelect;
 
-  //Si hay un identificador en la url rescatamos el juguete de la base de datos y rellenamos el formulario
+  //Si hay un identificador en la url rescatamos el horario de la base de datos y rellenamos el formulario
   //con sus datos y asi poder editarlo
   if(this.route.snapshot.paramMap.get('id')){
 
@@ -60,10 +60,10 @@ ngOnInit() {
   }
 }
 
-//Metodo para guardar el jueguete
+//Metodo para guardar el horario
 guardar(): void {
 
-  //Si el juguete es nuevo lo creamos en la base de datos con los datos recogidos en el formulario
+  //Si el horario es nuevo lo creamos en la base de datos con los datos recogidos en el formulario
   if(this.nuevaAgendaHorario){
     this.agendaHorariosService.addAgendaHorario(this.perfileForm.value).then(
       () => {

@@ -24,8 +24,8 @@ export var TipoEntrevistadorSelect: string [] = [
 
 export interface AgendaHorario {
     id: string;
-    entrevistador: tipoEntrevistador; // Indica el tipo de entrevistador (A o B)
     fechaCita: Date;
+    entrevistador: tipoEntrevistador; // Indica el tipo de entrevistador (A o B)
     horarioDisponible: horasCitas; // Horarios disponibles asociados a fechas
 }
 

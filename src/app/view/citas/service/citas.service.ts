@@ -8,38 +8,31 @@ import { Observable } from 'rxjs';
 })
 export class CitasService {
 
-  coleccion = 'citas';
+  //Colecciones de la base de datos
+  clientes: string = 'clientes';
+  agendaHorarios: string = 'agendaHorarios';
   
   constructor(
     private firebase: Firestore) { }
 
-    //Metodo del servicio para obtener todas las citas
-  getAllCitas() : Observable<any[]> {
-    const collRef = collection(this.firebase, this.coleccion);
-    return collectionData(collRef, {idField: 'id'}) as Observable<any[]>;
+    
+  //Metodo del servicio para rescatar de la base de datos a todos los proveedores
+  listProveedor(): any {
+    return this.firebase.collection(this.clientes).snapshotChanges();
   }
 
-  //Metodo del servicio para obtener una cita concreta
-  getCita(id: string): Observable<any>{
-    const docRef = doc(this.firebase, this.coleccion, id);
-    return docData(docRef, {idField: 'id'}) as Observable<any>;
+  //Metodo del servicio para rescatar de la base de datos a todos los juguetes
+  listJuguete(): any {
+    return this.firebase.collection(this.agendaHorarios).snapshotChanges();
   }
 
-  //Metodo del servicio para modificar una cita en concreto
-  updateCita(id: string, cita: any): any{
-    const docRef = doc(this.firebase, this.coleccion, id);
-    return updateDoc(docRef, cita);
+  //Metodo del servicio para rescatar de la base de datos a un juguete en concreto
+  getJuguete(id: string): any{
+    return this.firebase.collection(this.agendaHorarios).doc(id).snapshotChanges();
   }
 
-  //Metodo del servicio para añadir una nueva cita
-  addCita(cita: any){
-    const collRef = collection(this.firebase, this.coleccion);
-    return addDoc(collRef, cita);
-  }
-
-  //Metodo del servicio para borrar una cita en concreto
-  delete(id: string){
-    const docRef = doc(this.firebase, this.coleccion, id);
-    return deleteDoc(docRef);
+  //Metodo del servicio para rescatar de la base de datos a un proveedor en concreto
+  getProveedor(id: string): any{
+    return this.firebase.collection(this.clientes).doc(id).snapshotChanges();
   }
 }

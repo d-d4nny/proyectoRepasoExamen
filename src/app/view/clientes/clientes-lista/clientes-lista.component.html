@@ -24,9 +24,9 @@ juguete, otro para editarlo y otro para borrarlo-->
                     </tr>
                 </thead>
                 <tbody *ngIf="clientes">
-                    <tr *ngFor='let cliente of clientes'>  
+                    <tr *ngFor='let cliente of clientes; let i=index'>  
                         <td class='col-sm-6'>
-                            <i>{{cliente.id}</i>
+                            {{i+1}}
                         </td>
 
                         <td class='col-sm-6'>
