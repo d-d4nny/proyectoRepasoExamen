@@ -13,8 +13,8 @@ export class CitasListaComponent implements OnInit{
 
     //Variable necesaria
     citas?: any[];
-    idCliente?: Clientes;
-    idAgendaHorario?: AgendaHorario;
+    clienteSelect?: Clientes;
+    agendaHorarioSelect?: AgendaHorario;
 
 
     constructor(
