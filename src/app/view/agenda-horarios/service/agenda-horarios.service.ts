@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, docData, updateDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, docData, setDoc, updateDoc } from '@angular/fire/firestore';
 import { doc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
@@ -29,6 +29,11 @@ export class AgendaHorariosService {
   updateAgendaHorario(id: string, agendaHorario: any): any{
     const docRef = doc(this.firebase, this.coleccion, id);
     return updateDoc(docRef, agendaHorario);
+  }
+
+  updateEstado(id: any, estado: boolean){
+    const docRef = doc(this.firebase, this.coleccion, id);
+    return updateDoc(docRef, {estado: estado});
   }
 
   //Metodo del servicio para añadir una nueva agendaHorario

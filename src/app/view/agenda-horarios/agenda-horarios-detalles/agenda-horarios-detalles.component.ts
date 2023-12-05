@@ -24,7 +24,8 @@ export class AgendaHorariosDetallesComponent implements OnInit {
     
     entrevistador: [''],
     fechaCita: [''],
-    horarioDisponible: ['']
+    horarioDisponible: [''],
+    estado: [false]
 });
 
 constructor(

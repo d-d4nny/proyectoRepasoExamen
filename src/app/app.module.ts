@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment.development';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -35,7 +36,8 @@ import { AgendaHorariosModule } from './view/agenda-horarios/agenda-horarios.mod
     NgbModule,
     CitasModule,
     ClientesModule,
-    AgendaHorariosModule
+    AgendaHorariosModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]

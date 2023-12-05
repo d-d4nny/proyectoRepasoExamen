@@ -15,10 +15,10 @@ juguete, otro para editarlo y otro para borrarlo-->
             <table class='table table-striped'>
                 <thead>                
                     <tr>
-                        <th class='col-sm-1'>IDENTIFICADOR</th>
-                        <th class='col-sm-4'>FECHA CITA</th>
-                        <th class='col-sm-4'>ENTREVISTADOR</th>
-                        <th class='col-sm-4'>HORA CITA</th>
+                        <th class='col-md-1'>IDENTIFICADOR</th>
+                        <th class='col-md-4'>FECHA CITA</th>
+                        <th class='col-md-4'>ENTREVISTADOR</th>
+                        <th class='col-md-4'>HORA CITA</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="agendaHorarios">
@@ -27,15 +27,15 @@ juguete, otro para editarlo y otro para borrarlo-->
                             <i>{{i+1}}</i>
                         </td>
                         
-                        <td class='col-sm-6'>
+                        <td class='col-md-4'>
                             <i>{{agendaHorario.fechaCita}}</i>
                         </td>
 
-                        <td class='col-sm-6'>
+                        <td class='col-md-4'>
                             <i>{{agendaHorario.entrevistador}}</i>
                         </td>
 
-                        <td class='col-sm-6'>
+                        <td class='col-md-4'>
                             <i>{{agendaHorario.horarioDisponible}}</i>
                         </td>
 
@@ -43,13 +43,13 @@ juguete, otro para editarlo y otro para borrarlo-->
                             
                         </td>
 
-                        <td class=”col-sm-1”>
-                            <a class='btn btn-info' routerLink="agendaHorarios/{{agendaHorario.id}}/edit">Editar</a>
+                        <td class=”col-md-1”>
+                            <i class="bi bi-pencil-square text-success" routerLink="agendaHorario/{{agendaHorario.id}}/edit"></i>
                         </td>
 
 
-                        <td class=”col-sm-1”>
-                            <a class='btn btn-info' (click)="borrar(agendaHorario.id)">-</a>
+                        <td class=”col-md-1”>
+                            <i class="bi bi-trash ps-3 text-danger" (click)="borrar(agendaHorario.id)"></i>
                         </td>
 
                     </tr>

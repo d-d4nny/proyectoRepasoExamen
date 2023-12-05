@@ -27,6 +27,7 @@ export interface AgendaHorario {
     fechaCita: Date;
     entrevistador: tipoEntrevistador; // Indica el tipo de entrevistador (A o B)
     horarioDisponible: horasCitas; // Horarios disponibles asociados a fechas
+    estado: boolean;
 }
 
 // Función que devuelve una representación en cadena de los campos de la interfaz

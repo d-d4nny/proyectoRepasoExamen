@@ -2,12 +2,10 @@
 juguete, otro para editarlo y otro para borrarlo-->
 <div class='container'>
     <div class='row'>
-        <div class='col-sm-12'>
+        <div class='col-md-12'>
             
             <form class='form-inline'>
-                <fieldset class='form-group col-sm-11'></fieldset>
-                
-                <fieldset class='form-group col-sm-1'>
+                <fieldset class='form-group col-md-1'>
                     <a class= 'btn btn-primary' routerLink="clientes/new">+</a>
                 </fieldset>
             </form>
@@ -15,47 +13,47 @@ juguete, otro para editarlo y otro para borrarlo-->
             <table class='table table-striped'>
                 <thead>                
                     <tr>
-                        <th class='col-sm-2'>IDENTIFICADOR</th>
-                        <th class='col-sm-6'>NOMBRE</th>
-                        <th class='col-sm-6'>APELLIDOS</th>
-                        <th class='col-sm-6'>DNI</th>
-                        <th class='col-sm-6'>TELEFONO</th>
-                        <th class='col-sm-6'>EMAIL</th>
+                        <th class='col-md-2'>IDENTIFICADOR</th>
+                        <th class='col-md-2'>NOMBRE</th>
+                        <th class='col-md-3'>APELLIDOS</th>
+                        <th class='col-md-2'>DNI</th>
+                        <th class='col-md-2'>TELEFONO</th>
+                        <th class='col-md-3'>EMAIL</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="clientes">
                     <tr *ngFor='let cliente of clientes; let i=index'>  
-                        <td class='col-sm-6'>
+                        <td class='col-md-2'>
                             {{i+1}}
                         </td>
 
-                        <td class='col-sm-6'>
+                        <td class='col-md-2'>
                             <i>{{cliente.nombre}}</i>
                         </td>
 
-                        <td class='col-sm-6'>
+                        <td class='col-md-3'>
                             <i>{{cliente.apellidos}}</i>
                         </td>
 
-                        <td class='col-sm-6'>
+                        <td class='col-md-2'>
                             <i>{{cliente.dni}}</i>
                         </td>
 
-                        <td class='col-sm-6'>
+                        <td class='col-md-2'>
                             <i>{{cliente.telefono}}</i>
                         </td>
                         
-                        <td class='col-sm-6'>
+                        <td class='col-md-3'>
                             <i>{{cliente.email}}</i>
                         </td>
 
-                        <td class=”col-sm-1”>
-                            <a class='btn btn-info' routerLink="clientes/{{cliente.id}}/edit">Editar</a>
+                        <td class=”col-md-1”>
+                            <i class="bi bi-pencil-square text-success" routerLink="clientes/{{cliente.id}}/edit"></i>
                         </td>
 
 
-                        <td class=”col-sm-1”>
-                            <a class='btn btn-info' (click)="borrar(cliente.id)">-</a>
+                        <td class=”col-md-1”>
+                            <i class="bi bi-trash ps-3 text-danger" (click)="borrar(cliente.id)"></i>
                         </td>
 
                     </tr>

@@ -1,51 +1,56 @@
-<div class="container">
-    
-    <!--Formulario de la cita-->
-    <form [formGroup] = "perfileForm" (ngSubmit)="cita()">
-            <h1>CITAR CLIENTES</h1>
-
+<!--Aqui establecemos la lista donde mostraremos los datos de los juguetes, ademas de un boton para añadir un nuevo
+juguete, otro para editarlo y otro para borrarlo-->
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-12'>
+            
+            <form class='form-inline'>
+                <fieldset class='form-group col-sm-11'></fieldset>
+                
+                <fieldset class='form-group col-sm-1'>
+                    <a class= 'btn btn-primary' routerLink="citas/new">+</a>
+                </fieldset>
+            </form>
             <br>
+            <table class='table table-striped'>
+                <thead>                
+                    <tr>
+                        <th class='col-md-1'>IDENTIFICADOR</th>
+                        <th class='col-md-6'>ID CLIENTE</th>
+                        <th class='col-md-6'>ID CITA</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="citas">
+                    <tr *ngFor='let cita of citas; let i=index'>
+                        <td class='col-sm-1'>
+                            <i>{{i+1}}</i>
+                        </td>
 
-        <div>
-            <p>SELECIONE EL CLIENTE A CITAR: </p>
+                        <td class='col-md-6'>
+                            <i>{{cita.idCliente}}</i>
+                        </td>
 
-            <select formControlName="clienteSelect" class="form-control" name="clienteSelect" required="">
-                <option value="" disabled selected hidden>SELECCIONE UN CLIENTE...</option>
-                <option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.dni}}</option>
-            </select>
+                        <td class='col-md-6'>
+                            <i>{{cita.idAgendaHorario}}</i>
+                        </td>
 
+                        <td class=”col-sm-1”>
+                            
+                        </td>
+
+                        <td class=”col-md-1”>
+                            <i class="bi bi-pencil-square text-success" routerLink="citas/{{cita.id}}/edit"></i>
+                        </td>
+
+
+                        <td class=”col-md-1”>
+                            <i class="bi bi-trash ps-3 text-danger" (click)="borrar(cita.id)"></i>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <div>
-            <p>SELECIONE LA INFORMACION DE LA CITA: </p>
-        
-            <select formControlName="agendaHorarioSelect" class="form-control" name="agendaHorarioSelect" required="">
-                <option value="" disabled selected hidden>SELECCIONE UNA AGENDA...</option>
-                <option *ngFor="let agendaHorario of agendaHorarios" [value]="agendaHorario.id">{{mostrarCampos(agendaHorarioCitado)}}</option>
-            </select>
-
-            <!-- <select formControlName="agendaHorarioSelect" class="form-control" name="agendaHorarioSelect" required>
-                <option value="" disabled selected hidden>SELECCIONE UNA AGENDA...</option>
-                <option *ngFor="let agendaOption of agendaOptions" [value]="agendaOption.id"> {{ agendaOption.display }}</option>
-            </select> -->
-
-        </div>
-
-        <br>
-        
-        <button type="submit" class="btn btn-primary" [disabled]="!perfileForm.valid">NUEVA CITA</button>
-    </form>
-    
-
-    <br>
-
-    <!--Recibo de la cita-->
-    <div *ngIf="agendaHorarioCitado && clienteCitado" style="background-color: bisque;">
-        <h3 style="color: crimson;">RECIBO DE CITA REALIZADA:</h3>
-        <br>
-        <p>CLIENTE CITADO: {{clienteCitado.id}}</p>
-        <p>DATOS DE CITA: {{mostrarCampos(agendaHorarioCitado)}}</p>
     </div>
-    
-
 </div>
+

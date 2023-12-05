@@ -1,1 +1,54 @@
-<p>citas-detalles works!</p>
+<div class="container">
+    
+    <!--Formulario de la cita-->
+    <form [formGroup] = "perfileForm" (ngSubmit)="cita()">
+            <h1>CITAR CLIENTES</h1>
+
+            <br>
+
+        <div>
+            <p>SELECIONE EL CLIENTE A CITAR: </p>
+
+            <select formControlName="clienteSelect" class="form-control" name="clienteSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UN CLIENTE...</option>
+                <option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.dni}}</option>
+            </select>
+
+        </div>
+
+        <div>
+            <p>SELECIONE LA INFORMACION DE LA CITA: </p>
+        
+            <select formControlName="agendaHorarioSelect" class="form-control" name="agendaHorarioSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UNA AGENDA...</option>
+                <option *ngFor="let agendaHorario of agendaHorarios" [value]="agendaHorario.id">{{agendaHorario.fechaCita}}</option>
+            </select>
+
+            <!-- <select formControlName="agendaHorarioSelect" class="form-control" name="agendaHorarioSelect" required>
+                <option value="" disabled selected hidden>SELECCIONE UNA AGENDA...</option>
+                <option *ngFor="let agendaOption of agendaOptions" [value]="agendaOption.id"> {{ agendaOption.display }}</option>
+            </select> -->
+
+        </div>
+
+        <br>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="!perfileForm.valid">NUEVA CITA</button>
+        <button type="button" class="btn btn-primary" (click)="volver()" style="margin-left: 5%;">VOLVER</button>
+    </form>
+    
+
+    <br>
+
+    <!--Recibo de la cita-->
+    <div *ngIf="agendaHorarioCitado && clienteCitado" style="background-color: bisque;">
+        <h3 style="color: crimson;">RECIBO DE CITA REALIZADA:</h3>
+        <br>
+        <p>DATOS DE CITA: dia {{agendaHorarioCitado.fechaCita}} 
+            - hora {{agendaHorarioCitado.horarioDisponible}} 
+            - entrevistador {{agendaHorarioCitado.entrevistador}}</p>
+        <p>CLIENTE CITADO: {{clienteCitado.dni}}</p>
+    </div>
+    
+
+</div>
