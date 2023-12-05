@@ -1,45 +1,50 @@
 <div class="container">
     
-    <!--Formulario de la compra-->
+    <!--Formulario de la cita-->
     <form [formGroup] = "perfileForm" (ngSubmit)="cita()">
-            <h1>COMPRAS PROVEEDORES</h1>
+            <h1>CITAR CLIENTES</h1>
 
             <br>
 
         <div>
-            <p>SELECIONE EL PROVEEDOR DONDE COMPRAR: </p>
+            <p>SELECIONE EL CLIENTE A CITAR: </p>
 
-            <select formControlName="proveedorSelect" class="form-control" name="proveedorSelect" required="">
-                <option value="" disabled selected hidden>SELECCIONE UN PROVEEDOR...</option>
-                <option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.nombreCompleto}}</option>
+            <select formControlName="clienteSelect" class="form-control" name="clienteSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UN CLIENTE...</option>
+                <option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.dni}}</option>
             </select>
 
         </div>
 
         <div>
-            <p>SELECIONE EL PRODUCTO A COMPRAR: </p>
+            <p>SELECIONE LA INFORMACION DE LA CITA: </p>
         
-            <select formControlName="jugueteSelect" class="form-control" name="jugueteSelect" required="">
-                <option value="" disabled selected hidden>SELECCIONE UN JUGUETE...</option>
-                <option *ngFor="let agendaHorario of agendaHorarios" [value]="agendaHorario.id">{{agendaHorario.nombre}}</option>
+            <select formControlName="agendaHorarioSelect" class="form-control" name="agendaHorarioSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UNA AGENDA...</option>
+                <option *ngFor="let agendaHorario of agendaHorarios" [value]="agendaHorario.id">{{mostrarCampos(agendaHorarioCitado)}}</option>
             </select>
+
+            <!-- <select formControlName="agendaHorarioSelect" class="form-control" name="agendaHorarioSelect" required>
+                <option value="" disabled selected hidden>SELECCIONE UNA AGENDA...</option>
+                <option *ngFor="let agendaOption of agendaOptions" [value]="agendaOption.id"> {{ agendaOption.display }}</option>
+            </select> -->
 
         </div>
 
         <br>
         
-        <button type="submit" class="btn btn-primary" [disabled]="!perfileForm.valid">COMPRAR</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!perfileForm.valid">NUEVA CITA</button>
     </form>
     
 
     <br>
 
-    <!--Recibo de la compra que se muestra tras la compra-->
-    <div *ngIf="agendaHorarioCitada && clienteCitado" style="background-color: bisque;">
-        <h3 style="color: crimson;">RECIBO DE COMPRA REALIZADA:</h3>
+    <!--Recibo de la cita-->
+    <div *ngIf="agendaHorarioCitado && clienteCitado" style="background-color: bisque;">
+        <h3 style="color: crimson;">RECIBO DE CITA REALIZADA:</h3>
         <br>
-        <p>PROVEEDOR DE COMPRA: {{clienteCitado.nombre}}</p>
-        <p>ARTICULO DE COMPRA: {{jugueteComprado.nombre}}</p>
+        <p>CLIENTE CITADO: {{clienteCitado.id}}</p>
+        <p>DATOS DE CITA: {{mostrarCampos(agendaHorarioCitado)}}</p>
     </div>
     
 

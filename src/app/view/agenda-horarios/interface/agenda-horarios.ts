@@ -29,3 +29,10 @@ export interface AgendaHorario {
     horarioDisponible: horasCitas; // Horarios disponibles asociados a fechas
 }
 
+// Función que devuelve una representación en cadena de los campos de la interfaz
+function mostrarCampos(ag: AgendaHorario): string {
+    return `Fecha: ${ag.fechaCita}, Entrevistador: ${ag.entrevistador}, Hora: ${ag.horarioDisponible}`;
+  }
+
+
+

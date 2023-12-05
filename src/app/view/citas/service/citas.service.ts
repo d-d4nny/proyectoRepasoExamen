@@ -15,24 +15,28 @@ export class CitasService {
   constructor(
     private firebase: Firestore) { }
 
-    
-  //Metodo del servicio para rescatar de la base de datos a todos los proveedores
-  listProveedor(): any {
-    return this.firebase.collection(this.clientes).snapshotChanges();
+
+  //Metodo del servicio para obtener todos los juguetes
+  listCliente() : Observable<any[]> {
+    const collRef = collection(this.firebase, this.clientes);
+    return collectionData(collRef, {idField: 'id'}) as Observable<any[]>;
   }
 
-  //Metodo del servicio para rescatar de la base de datos a todos los juguetes
-  listJuguete(): any {
-    return this.firebase.collection(this.agendaHorarios).snapshotChanges();
+  //Metodo del servicio para obtener todos los juguetes
+  listAgendaHorario() : Observable<any[]> {
+    const collRef = collection(this.firebase, this.agendaHorarios);
+    return collectionData(collRef, {idField: 'id'}) as Observable<any[]>;
+  }
+  
+  //Metodo del servicio para obtener un juguete concreto
+  getCliente(id: string): Observable<any>{
+    const docRef = doc(this.firebase, this.clientes, id);
+    return docData(docRef, {idField: 'id'}) as Observable<any>;
   }
 
-  //Metodo del servicio para rescatar de la base de datos a un juguete en concreto
-  getJuguete(id: string): any{
-    return this.firebase.collection(this.agendaHorarios).doc(id).snapshotChanges();
-  }
-
-  //Metodo del servicio para rescatar de la base de datos a un proveedor en concreto
-  getProveedor(id: string): any{
-    return this.firebase.collection(this.clientes).doc(id).snapshotChanges();
+  //Metodo del servicio para obtener un juguete concreto
+  getAgendaHorario(id: string): Observable<any>{
+    const docRef = doc(this.firebase, this.agendaHorarios, id);
+    return docData(docRef, {idField: 'id'}) as Observable<any>;
   }
 }
